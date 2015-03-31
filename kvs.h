@@ -1,7 +1,6 @@
 #ifndef __KVS_H
 #define __KVS_H
-
-typedef unsigned long size_t;
+#include <stdio.h>
 
 typedef struct KVPair {
     const void *key;
@@ -12,6 +11,7 @@ typedef struct KVPair {
 typedef struct {
     PKVPair *pairs;
     size_t capacity;
+    size_t used;
 }KVStore;
 
 KVStore *kvs_create(void);
