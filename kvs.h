@@ -9,7 +9,7 @@ typedef struct KVPair {
 }KVPair, *PKVPair;
 
 typedef struct {
-    PKVPair *pairs;
+    KVPair *pairs;
     size_t capacity;
     size_t used;
 }KVStore;
