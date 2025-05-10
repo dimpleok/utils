@@ -6,9 +6,9 @@
 
 MemChunk *g_chunk = NULL;
 
-static void initialChunk(MemChunk** chunk, size_t totalSize)
+static void initialChunk(MemChunk **chunk, size_t totalSize)
 {
-    *chunk = (MemChunk*) malloc(sizeof(MemChunk));
+    *chunk = (MemChunk*)malloc(sizeof(MemChunk));
     if (*chunk == NULL )
         return;
 
