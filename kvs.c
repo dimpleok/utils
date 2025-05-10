@@ -22,9 +22,9 @@ static size_t hashKey(const void* key, size_t capacity)
     size_t hashVal = 0;
     size_t n = strlen(key);
     int i = 0;
-    if(n > 25)
+    if (n > 25)
         n = 25;
-    for(i = 0; i < n; i++) {
+    for (i = 0; i < n; i++) {
         hashVal = (hashVal << 5) - hashVal;
         hashVal += ((size_t*)key)[i];
     }
@@ -66,8 +66,8 @@ void rehash(KVStore *store)
     int i = 0; 
     PKVPair newPairs = (PKVPair)malloc(sizeof(KVPair) * INIT_POOL_SIZE);
     size_t newCapacity = prime(store->capacity << 1); 
-    for(i = 0; i < store->capacity; i++) {
-        if(store->pairs[i].key) {
+    for (i = 0; i < store->capacity; i++) {
+        if (store->pairs[i].key) {
             size_t hashVal = hashKey(store->pairs[i].key, newCapacity);
             newPairs[hashVal].key = store->pairs[i].key;
             newPairs[hashVal].value = store->pairs[i].value;
@@ -82,10 +82,10 @@ int kvs_put(KVStore *store, const void *key, void *value)
 {
     size_t hashVal = hashKey(key, store->capacity);
     KVPair *head = &store->pairs[hashVal];
-    if(head->key) {
+    if (head->key) {
        KVPair *current = head;
        KVPair *prev = NULL;
-       while(current) {
+       while (current) {
           prev = current;
           current = current->next;
        }
@@ -105,12 +105,12 @@ void *kvs_get(KVStore *store, const void *key)
 {
     size_t hashVal = hashKey(key, store->capacity);
     KVPair *head = &store->pairs[hashVal];
-    if(head->key) {
+    if (head->key) {
        KVPair *current = head;
        size_t n = strlen(key);
-       while(current && memcmp(current->key, current->key, n) != 0)
+       while (current && memcmp(current->key, current->key, n) != 0)
           current = current->next; 
-       if(current == NULL) {
+       if (current == NULL) {
           return NULL;
        } else {
           return current->value;
