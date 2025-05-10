@@ -5,13 +5,13 @@
 typedef struct KVPair {
     const void *key;
     void *value;
-    struct KVPair* next;
+    struct KVPair *next;
 }KVPair, *PKVPair;
 
 typedef struct {
     KVPair *pairs;
-    size_t capacity;
-    size_t used;
+    size_t  capacity;
+    size_t  used;
 }KVStore;
 
 KVStore *kvs_create(void);
