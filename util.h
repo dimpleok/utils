@@ -8,23 +8,23 @@ typedef struct _MemChunk
 {
     size_t freeSize;
     size_t totalSize;
-    char* mem;
+    char  *mem;
 }MemChunk;
 
 typedef struct keyVal
 {
-    char* key;
-    char* value;
-    struct keyVal* next;
+    char *key;
+    char *value;
+    struct keyVal *next;
 }KeyVal;
 
-extern void destroyChunk();
-extern void* _malloc(size_t size);
-extern char* _strdup(const char* src);
+extern void  destroyChunk();
+extern void *_malloc(size_t size);
+extern char *_strdup(const char *src);
 
-extern int addKeyValue(KeyVal **head, const char* key, const char* val) ;
-extern char* getValue(KeyVal *head, const char* key);
-extern int containsKey(KeyVal *head, const char* key);
+extern int addKeyValue(KeyVal **head, const char *key, const char *val) ;
+extern char *getValue(KeyVal *head, const char *key);
+extern int containsKey(KeyVal *head, const char *key);
 
 extern void getArguments(int argc, char* argv[], int keyc, const char* keyMap[], KeyVal **keyValues);
 /*
